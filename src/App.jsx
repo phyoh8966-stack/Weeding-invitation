@@ -1,59 +1,46 @@
-import EventDetails from "./components/EventDetails.jsx";
-import Footer from "./components/Footer.jsx";
-import Gallery from "./components/Gallery.jsx";
-import Hero from "./components/Hero.jsx";
-import MusicPlayer from "./components/MusicPlayer.jsx";
-import RSVP from "./components/RSVP.jsx";
-import Story from "./components/Story.jsx";
-import { wedding } from "./data/wedding.js";
-
-const navigation = [
-  ["Our story", "#story"],
-  ["The day", "#details"],
-  ["Gallery", "#gallery"],
-  ["RSVP", "#rsvp"],
-];
+import React from 'react';
+import Countdown from './components/Countdown';
+import Hero from './components/Hero';
+import EventDetails from './components/EventDetails';
+import RSVP from './components/RSVP';
+import Gallery from './components/Gallery';
+import MusicPlayer from './components/MusicPlayer';
+import Footer from './components/Footer';
 
 export default function App() {
+  // မင်္ဂလာပွဲကျင်းပမည့် ရက်စွဲနှင့် အချိန် (၂၈/၁၁/၂၀၂၆၊ နေ့လယ် ၂ နာရီ)
+  const weddingDate = new Date('2026-11-28T14:00:00');
+
   return (
-    <>
-      <header className="site-header">
-        <a aria-label="Phyo and Moe, home" className="brand font-display" href="#home">
-          P <span>&amp;</span> M
-        </a>
-        <nav aria-label="Main navigation" className="site-nav">
-          {navigation.map(([label, href]) => (
-            <a href={href} key={href}>
-              {label}
-            </a>
-          ))}
-        </nav>
-        <a className="header-rsvp" href="#rsvp">
-          RSVP <span aria-hidden="true">↗</span>
-        </a>
-      </header>
-      <main>
-        <Hero wedding={wedding} />
-        <div className="intro-note">
-          <span className="intro-ornament" aria-hidden="true">
-            ✳
-          </span>
-          <p>
-            A new adventure begins
-            <br />
-            <em>and we would love for you to be there.</em>
-          </p>
-          <span className="intro-ornament" aria-hidden="true">
-            ✳
-          </span>
-        </div>
-        <Story milestones={wedding.story} />
-        <EventDetails events={wedding.events} />
-        <Gallery photos={wedding.gallery} />
-        <RSVP />
-      </main>
-      <Footer wedding={wedding} />
+    <div className="min-h-screen bg-stone-50 text-stone-800 font-sans">
+      {/* Background Music Player */}
       <MusicPlayer />
-    </>
+
+      {/* Hero Section */}
+      <Hero />
+
+      {/* Countdown Section */}
+      <section className="py-16 px-4 text-center bg-white border-y border-stone-100">
+        <div className="max-w-xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-serif text-amber-900 mb-6">
+            Countdown to Our Big Day
+          </h2>
+          {/* Countdown Component ကို ဤနေရာတွင် ချိတ်ဆက်ထားသည် */}
+          <Countdown date={weddingDate} />
+        </div>
+      </section>
+
+      {/* Event Details Section */}
+      <EventDetails />
+
+      {/* Gallery Section */}
+      <Gallery />
+
+      {/* RSVP Section */}
+      <RSVP />
+
+      {/* Footer Section */}
+      <Footer />
+    </div>
   );
 }
