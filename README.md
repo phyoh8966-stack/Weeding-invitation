@@ -32,3 +32,4 @@ The floating music control plays a gentle melody synthesized in the browser,
 so no audio file or third-party music service is needed. The RSVP form currently
 shows a confirmation in the browser only; connect it to an RSVP service or
 backend to collect guest responses.
+update
